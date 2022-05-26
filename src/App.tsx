@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import InputField from "./components/InputField";
+import { todoModel } from "./components/models/todoModel";
 
-function App() {
+const App: React.FC = () => {
+  const [todo, setTodo] = useState<string>("");
+  const [todos, setTodos] = useState<todoModel[]>([]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setTodos([
+      ...todos,
+      {
+        id: Date.now(),
+        todo: todo,
+        isDone: false,
+      },
+    ]);
+    setTodo("");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <InputField todo={todo} setTodo={setTodo} handleSubmit={handleSubmit} />
+      <ul>
+        {todos.map((item, index) => (
+          <li key={index}>{item.todo}</li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
 export default App;
