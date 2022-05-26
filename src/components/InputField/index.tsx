@@ -1,5 +1,6 @@
 import React from "react";
 import { SetStateAction } from "react";
+import "../../App.css";
 
 interface Props {
   todo: string;
@@ -9,16 +10,17 @@ interface Props {
 
 const index: React.FC<Props> = ({ todo, setTodo, handleSubmit }) => {
   return (
-    <div>
+    <div className="inputField">
       <form onSubmit={handleSubmit}>
         <input
+          className="inputField__text"
           value={todo}
           type="text"
           onChange={(e) => {
             setTodo(e.target.value);
           }}
         ></input>
-        <input type="submit"></input>
+        <input className="inputField__submit" type="submit" value="Ok"></input>
       </form>
     </div>
   );

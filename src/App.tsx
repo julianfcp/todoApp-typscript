@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import InputField from "./components/InputField";
+import TodoList from "./components/TodoList";
 import { todoModel } from "./components/models/todoModel";
 
 const App: React.FC = () => {
@@ -21,14 +22,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <InputField todo={todo} setTodo={setTodo} handleSubmit={handleSubmit} />
-      <ul>
-        {todos.map((item, index) => (
-          <li key={index}>{item.todo}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div className="container">
+        <InputField todo={todo} setTodo={setTodo} handleSubmit={handleSubmit} />
+
+        <TodoList todos={todos} setTodos={setTodos} />
+      </div>
+    </>
   );
 };
 
