@@ -8,24 +8,34 @@ const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   const [todos, setTodos] = useState<todoModel[]>([]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleTodo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodo(e.target.value);
+  };
+
+  const handleAddTodo = (e: React.FormEvent) => {
     e.preventDefault();
-    setTodos([
-      ...todos,
-      {
-        id: Date.now(),
-        todo: todo,
-        isDone: false,
-      },
-    ]);
+    if (todo !== "") {
+      setTodos([
+        ...todos,
+        {
+          id: Date.now(),
+          todo: todo,
+          isDone: false,
+        },
+      ]);
+    }
     setTodo("");
   };
 
   return (
     <>
       <div className="container">
-        <InputField todo={todo} setTodo={setTodo} handleSubmit={handleSubmit} />
-
+        <InputField
+          todo={todo}
+          setTodo={setTodo}
+          handleTodo={handleTodo}
+          handleAddTodo={handleAddTodo}
+        />
         <TodoList todos={todos} setTodos={setTodos} />
       </div>
     </>

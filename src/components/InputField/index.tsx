@@ -4,25 +4,27 @@ import "../../App.css";
 
 interface Props {
   todo: string;
-  setTodo: React.Dispatch<SetStateAction<string>>;
-  handleSubmit: (e: React.FormEvent) => void;
+  setTodo?: React.Dispatch<SetStateAction<string>>; // optional "?"
+  handleAddTodo: (e: React.FormEvent) => void;
+  handleTodo: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const index: React.FC<Props> = ({ todo, setTodo, handleSubmit }) => {
+const index: React.FC<Props> = ({
+  todo,
+  setTodo,
+  handleTodo,
+  handleAddTodo,
+}) => {
   return (
-    <div className="inputField">
-      <form onSubmit={handleSubmit}>
-        <input
-          className="inputField__text"
-          value={todo}
-          type="text"
-          onChange={(e) => {
-            setTodo(e.target.value);
-          }}
-        ></input>
-        <input className="inputField__submit" type="submit" value="Ok"></input>
-      </form>
-    </div>
+    <form onSubmit={handleAddTodo} className="inputForm">
+      <input
+        className="inputForm__text"
+        value={todo}
+        type="text"
+        onChange={handleTodo}
+      ></input>
+      <input className="inputForm__submit" type="submit" value="Ok"></input>
+    </form>
   );
 };
 

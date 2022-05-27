@@ -3,44 +3,56 @@
   max-width: 80%;
 }
 
-.inputField {
+.inputForm {
   display: flex;
+  position: relative;
+  width: 80%;
   justify-content: center;
-  margin-top: 10px;
+  margin: 20px auto;
+}
+@media (min-width: 920px) {
+  .inputForm {
+    width: 50%;
+  }
 }
 
-.inputField__text {
-  margin: 0;
-  border-radius: 10px;
-  height: 40px;
-  width: 200px;
-  border: 1px solid;
-  font-size: 1em;
-  padding-left: 10px;
+.inputForm__text {
+  border-radius: 5px;
+  width: 100%;
+  background: #fff;
+  color: #a3a3a3;
+  font: inherit;
+  font-size: 1.5em;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0;
+  outline: 0;
+  padding: 22px 18px;
 }
-.inputField__text:focus {
+.inputForm__text:focus {
   outline: none;
 }
 
-.inputField__submit {
-  border-radius: 30%;
+.inputForm__submit {
+  border-radius: 10%;
   height: 33px;
   border: 1px solid dodgerblue;
-  position: relative;
-  right: 40px;
+  position: absolute;
+  margin: 20px;
+  right: 0px;
   cursor: pointer;
   background: dodgerblue;
-  color: #fff;
+  color: #ededed;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
   outline: 0;
   transition: 0.3s linear;
 }
-.inputField__submit:active {
+
+.inputForm__submit:active {
   transform: scale(0.85);
   box-shadow: 5px 5px 25px 1px rgba(0, 0, 0, 0.25);
 }
 
-.inputField__submit:hover {
+.inputForm__submit:hover {
   background: #237fdc;
   border: 1px solid #237fdc;
 }
@@ -52,11 +64,17 @@
   gap: 1rem;
 }
 .cards__card {
+  min-width: 100px;
+  border-radius: 5px;
   background-color: dodgerblue;
   color: white;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   height: 4rem;
   box-shadow: 5px 5px 25px 1px rgba(0, 0, 0, 0.25);
+  overflow: auto;
+  overflow-wrap: break-word;
+  min-height: 100px;
+  position: relative;
 }
 @media (min-width: 600px) {
   .cards {
@@ -72,4 +90,19 @@
   .cards {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.cards__card__icons {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  display: flex;
+  flex-direction: row;
+}
+.cards__card__icons_i {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.cards__card__icons_d {
+  cursor: pointer;
 }
