@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
+import ListCompleted from "./components/TodoList/ListCompleted";
 import { todoModel } from "./components/models/todoModel";
 
 const App: React.FC = () => {
@@ -36,7 +37,22 @@ const App: React.FC = () => {
           handleTodo={handleTodo}
           handleAddTodo={handleAddTodo}
         />
-        <TodoList todos={todos} setTodos={setTodos} />
+        <div className="container__lists">
+          <div className="container__lists--active">
+            {todos.length !== 0 ? <h2>Active Tasks</h2> : ""}
+
+            <TodoList todos={todos} setTodos={setTodos} />
+          </div>
+
+          <div className="container__lists--completed">
+            {todos.filter((el) => el.isDone === true).length !== 0 ? (
+              <h2>Completed Tasks</h2>
+            ) : (
+              ""
+            )}
+            <ListCompleted todos={todos} setTodos={setTodos} />
+          </div>
+        </div>
       </div>
     </>
   );

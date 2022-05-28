@@ -9,7 +9,7 @@ interface Props {
   handleTodo: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const index: React.FC<Props> = ({
+const Index: React.FC<Props> = ({
   todo,
   setTodo,
   handleTodo,
@@ -22,10 +22,11 @@ const index: React.FC<Props> = ({
         value={todo}
         type="text"
         onChange={handleTodo}
+        placeholder="Enter a Task"
       ></input>
       <input className="inputForm__submit" type="submit" value="Ok"></input>
     </form>
   );
 };
 
-export default index;
+export default Index;

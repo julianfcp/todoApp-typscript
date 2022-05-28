@@ -56,6 +56,21 @@
   background: #237fdc;
   border: 1px solid #237fdc;
 }
+.container__lists {
+  display: grid;
+}
+
+.container__lists--completed {
+  max-width: 90%;
+  float: right;
+  margin: 30px auto;
+  color: #7a7a7a;
+}
+.container__lists--active {
+  margin: 30px auto;
+  width: 57vw;
+  color: #7a7a7a;
+}
 
 .cards {
   max-width: 100%;
@@ -63,8 +78,14 @@
   display: grid;
   gap: 1rem;
 }
+.cardsCompleted {
+  max-width: 100%;
+  margin: 30px auto;
+  display: grid;
+  gap: 1rem;
+}
 .cards__card {
-  min-width: 100px;
+  min-width: 200px;
   border-radius: 5px;
   background-color: dodgerblue;
   color: white;
@@ -76,17 +97,47 @@
   min-height: 100px;
   position: relative;
 }
+.cards__cardCompleted {
+  min-width: 200px;
+  border-radius: 5px;
+  background-color: rgb(184, 218, 253);
+  color: white;
+  padding: 1.5rem 1rem;
+  height: 4rem;
+  box-shadow: 5px 5px 25px 1px rgba(0, 0, 0, 0.25);
+  overflow: auto;
+  overflow-wrap: break-word;
+  min-height: 100px;
+  position: relative;
+  text-decoration: line-through;
+}
 @media (min-width: 600px) {
   .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .container__lists {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .container__lists--active {
+    width: 37vw;
   }
 }
 @media (min-width: 900px) {
   .cards {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 @media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1500px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 2000px) {
   .cards {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -105,4 +156,20 @@
 }
 .cards__card__icons_d {
   cursor: pointer;
+}
+.cards__card__inputEdit {
+  border-radius: 5px;
+  width: fit-content;
+  background: #fff;
+  color: #a3a3a3;
+  font: inherit;
+  font-size: 1em;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0;
+  outline: 0;
+  padding: 22px 18px;
+  margin-top: 10px;
+}
+.cards__card__inputEdit:focus {
+  outline: none;
 }

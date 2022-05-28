@@ -33,9 +33,9 @@ const Index: React.FC<Props> = ({ todos, setTodos }) => {
     setTodos(newList);
   };
   return (
-    <div className="cards">
+    <div className="cardsCompleted">
       {todos.map((item, index) => {
-        if (!item.isDone) {
+        if (item.isDone) {
           return (
             <TodoCard
               todo={item}
